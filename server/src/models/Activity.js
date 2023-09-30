@@ -35,13 +35,13 @@ module.exports = (sequelize) => {
          allowNull: false,
          defaultValue: "Summer",
        },
-       image: {
-        type: DataTypes.STRING,
-        allowNull: true,
-        validate: {
-            isUrl: true
-        }
-      }
+      //  image: {
+      //   type: DataTypes.STRING,
+      //   allowNull: true,
+      //   validate: {
+      //       isUrl: true
+      //   }
+      // }
    },
       { timestamps: false });
 };

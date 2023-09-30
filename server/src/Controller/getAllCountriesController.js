@@ -23,7 +23,7 @@ const getAllCountriesController = async (name) => {
     
       // Si no se encuentran países que coincidan con el nombre proporcionado, lanza un error
       if (countries.length === 0) {
-        throw new Error('Country not found');
+        throw new Error('País inexistente');
       }
     
       // Devuelve los países encontrados con sus actividades asociadas

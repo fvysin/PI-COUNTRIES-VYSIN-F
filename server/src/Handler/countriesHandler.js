@@ -3,7 +3,7 @@ const {getCountryByIdController} =require ('../Controller/getCountryByIdControll
 
 
 const getAllCountriesHandler = async(req,res) => {
-    console.log('hola detro')
+    // console.log('hola detro')
 
     try {
         const { name } = req.query;
@@ -55,7 +55,7 @@ const getCountryByNameHandler=async(req, res)=>{
             res.status(200).json({message:'No se encontraron coincidencias, Por favor Recargar Todas las Paises'})
         }else{
     
-            res.status(200).json(apiDogs)
+            res.status(200).json(apiCount)
         }
     }
     } catch (error) {

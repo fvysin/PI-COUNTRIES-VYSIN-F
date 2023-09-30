@@ -1,36 +1,43 @@
-const { Country, Activity } = require("../db");
-const { Op } = require("sequelize");
 
-const postActivityController = async (
-  name,
-  difficulty,
-  duration,
-  season,
-  countries
-) => {
-//  console.log('ho')
-const find = await Country.findAll({
-    where: { name: { [Op.iLike]: name } }});
+const { Activity, Country } = require('../db.js');
+
+const postActivityController = async (name, difficulty, duration, season, countries) => {
+  if (!name || !difficulty || !season || !countries) {
+    throw new Error('Faltan datos');
+  }
+
+
+  // const countryid = await Country.findAll({
+  //   where: { 
+  //     id: countries }
+  // });
   
-  if (!find.length) {
-  const postActivity = await Activity.create({
+  const newActivity = await Activity.create({
     name,
     difficulty,
-    duration,
-    season,
+    duration: duration ? duration : null,
+    season
   });
-
-//   const countriesData = await Countries.findAll({
-//     where: {
-//       name: countries,
-//     },
-//   });
-
-//   const countryIds = countriesData.map((country) => country.id);
-  await postActivity.addCountries(countries);
-
-  return postActivity;
+  if (!newActivity){
+    throw new Error('Faltan datos');
   }
+  
+  // Busca o crea el país usando solo el nombre
+  
+  // Asocia la actividad con el país encontrado o creado
+  countries.forEach(async (country) => {
+    let activityCountry = await Country.findOne({
+      where: {
+        id: country,
+      },
+    });
+  await newActivity.addCountry(activityCountry);
+  })
+  ///OJOOOO
+
+  return newActivity;
 };
 
-module.exports = postActivityController;
+module.exports = {
+  postActivityController
+};

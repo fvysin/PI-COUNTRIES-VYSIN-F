@@ -56,7 +56,7 @@ const loadCountries = async () => {
                 subregion: data[i].subregion,
                 capital: data[i].capital
             }
-            console.log(countryInfo)
+            // console.log(countryInfo)
             //Guarda los datos
             await Country.findOrCreate({
                 where: {

@@ -1,26 +1,23 @@
 const db = require( '../db' )
-const {Activity}=require ('../db')
-const {getCountriesApi}= require ('../../utils')
-
-
+const {Activity, Country}=require ('../db')
+// const { Op } = require("sequelize");
 
 const getCountryByIdController= async (id) =>{
 
-   
-    const countDb= await  (getCountriesApi)
-
 // console.log("controllerr var id", id)
+//OJO mayusculas/minusculas
 
-    const bd= await countDb.findByPk(id,{
-    include:[
-        {
-        model: Activity,
-        attributes: ["id", "name"]
-    }]}
-    )
-    return db
-    }
-
+    const country = await Country.findAll({
+        where: {
+          id: id.toUpperCase(),
+        },
+        include: {
+          model: Activity,
+          through: { attributes: [] },
+        },
+      });
+      return country;
+    };
 
 
 

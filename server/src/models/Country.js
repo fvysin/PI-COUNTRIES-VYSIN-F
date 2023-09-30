@@ -1,4 +1,4 @@
-// const { DataTypes } = require('sequelize');
+
 
 // // ID (Código de tres letras). *
 // // Nombre. *
@@ -8,51 +8,6 @@
 // // Subregión.
 // // Área.
 // // Población. *
-
-// module.exports = (sequelize)=>{
-//   sequelize.define('Country',{
-//     id: {
-//       type: DataTypes.STRING(3),
-//       allowNull: false,
-//       primaryKey: true,
-//       unique: true,
-//     },
-//     name: {
-//       type: DataTypes.STRING,
-//       allowNull: false,
-//       unique:true,
-//     },
-    
-//     image: {
-//       type: DataTypes.STRING,
-//       allowNull: true,
-//     },
-   
-//     continents: {
-//       type: DataTypes.STRING,
-//       allowNull: false,
-//     },
-//     capital: {
-//       type: DataTypes.STRING,
-//       allowNull: false,
-//     },
-
-//    subregion: {
-//       type: DataTypes.STRING,
-//       allowNull: false,
-//     },
-//     area: {
-//       type: DataTypes.INTEGER,
-//     },
-//     population: {
-//       type: DataTypes.INTEGER,
-//       allowNull: false,
-//     },
-  
-//   },
-//   {timestamps: false, freezeTableName: true}
-//   );
-// };
 
 
 const { DataTypes } = require("sequelize");
@@ -64,7 +19,7 @@ module.exports = (sequelize) => {
     "Country",
     {
       id: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(3),
         allowNull: false,
         primaryKey: true,
       },
