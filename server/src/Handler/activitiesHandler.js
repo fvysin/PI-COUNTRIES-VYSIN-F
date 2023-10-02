@@ -18,13 +18,13 @@ const getAllActivitiesHandler=async(req, res)=>{
 }
 //body->recibimos info
 const postActivitiesHandler= async(req, res)=>{
-    console.log("hola")
+
     //LE HAGO UN ASYN AWAIT
     try {
         const {name, difficulty, duration, season, countries } =req.body
         
         const newActivity = await postActivityController( name, difficulty, duration, season, countries   )
-        console.log('post handler', newActivity)
+        // console.log('post handler', newActivity)
    
         res.status(201).json(newActivity) 
    

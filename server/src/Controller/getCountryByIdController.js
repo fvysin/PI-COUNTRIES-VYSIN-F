@@ -11,11 +11,18 @@ const getCountryByIdController= async (id) =>{
         where: {
           id: id.toUpperCase(),
         },
-        include: {
+        include: [
+          {
           model: Activity,
+          attributes: ['name', 'duration', 'difficulty', 'season'],
           through: { attributes: [] },
-        },
+        },]
       });
+      if (country.length === 0) {
+        return { error: 'País no encontrado' };
+    }
+
+    
       return country;
     };
 
