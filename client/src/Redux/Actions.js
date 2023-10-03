@@ -73,11 +73,13 @@ export const postActivities = (actPosteo) => {
     }
     
 
-export const clear = () => {
-    return { 
-        type: CLEAR, 
-        }
-};
+    export function clear() {
+        return function (dispatch) {
+          dispatch({
+            type: CLEAR,
+          });
+        };
+      }
 
 export function continentFilter(order) {
     return function (dispatch) {

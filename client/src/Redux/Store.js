@@ -1,7 +1,7 @@
 import {createStore, applyMiddleware, compose} from 'redux';
 import reducer from './reducer';
 import thunkMiddleware from 'redux-thunk'
-//thunkmiddleware -> permite hacer las requests
+// thunkmiddleware -> permite hacer las requests
 
 
 const composeEnhacer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // esta linea es para conectar don la extension

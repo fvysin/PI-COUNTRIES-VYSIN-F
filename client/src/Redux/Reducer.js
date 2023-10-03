@@ -50,8 +50,8 @@ const  reducer=(state= initialState, action)=> {
                     ...state,
                     countryId: [],          
                 };
-                default:
 
+            default:
             return {...state}    
     }
 
