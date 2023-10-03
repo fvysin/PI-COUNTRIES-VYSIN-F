@@ -1,0 +1,7 @@
+export const GET_ALL_COUNTRIES= "GET_ALL_COUNTRIES"
+export const GET_BY_ID="GET_BY_ID"
+export const GET_BY_NAME="GET_BY_NAME"
+export const GET_ALL_ACTIVITIES="GET_ALL_ACTIVITIES"
+export const POST = "POST"
+export const ORDER= "ORDER"
+export const FILTER= "FILTER"

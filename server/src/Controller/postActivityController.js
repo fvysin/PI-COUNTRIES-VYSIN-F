@@ -77,7 +77,7 @@ const postActivityController = async (name, difficulty, duration, season, countr
         });
 
         await newActivity.addCountries(arrayOfCountries);
-           console.log ('newActivi', newActivity)
+        //    console.log ('newActivi', newActivity)
         return newActivity;
     }
 };
