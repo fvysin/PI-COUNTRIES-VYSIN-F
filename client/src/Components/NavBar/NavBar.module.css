@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1%;
+    padding-bottom: 1%;
+
+    background-color: rgba(164, 60, 60, 0.6);
+    border-radius: 15px;
+    box-shadow: 10px, 10px, 5px, purple;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 35%;
+}
+
+
+.ul {
+    list-style-type: none;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #f1f1f1;
+    font-weight: bold;
+}
+
+.ul :hover {
+    color: #029ca6;
+    transition: .3s;
+}

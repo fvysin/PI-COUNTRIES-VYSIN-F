@@ -12,7 +12,7 @@ const Card=({id, name, image, continents })=> {
     <h4 className={style.name}>{name}</h4>
     </Link>
     <img src={image} alt={""} className={style.image}/>
-    <h4 className={style.continents} > Continente: {continents}  </h4>   
+    <h4 className={style.continents} > Continent: {continents}  </h4>   
         </div>
         )
       }

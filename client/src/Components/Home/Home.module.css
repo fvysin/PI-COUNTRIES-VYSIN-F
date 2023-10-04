@@ -1,0 +1,10 @@
+.background{
+    background-color: skyblue;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 120vh; /* El 100% de la altura de la ventana del navegador */
+    
+
+}
