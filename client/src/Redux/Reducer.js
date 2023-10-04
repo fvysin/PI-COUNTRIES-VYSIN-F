@@ -3,7 +3,7 @@ import {
     GET_ALL_ACTIVITIES,
     GET_BY_ID,
     GET_BY_NAME,
-    // POST,
+    POST,
     // ORDER,
     CLEAR,
     // FILTER
@@ -49,6 +49,12 @@ const  reducer=(state= initialState, action)=> {
             return {
                     ...state,
                     countryId: [],          
+                };
+
+            case POST:
+                return{
+                ...state,
+                activities:[...state.activities, action.payload]
                 };
 
             default:

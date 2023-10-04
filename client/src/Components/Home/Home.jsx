@@ -16,7 +16,7 @@ const Home=()=> {
 
   return (
     <div className="video-background">
-  
+   
       <Cards countries ={countries}/>
       {/* Cards le está proporcionando datos a través de la prop countries, permitiendo que el componente Cards utilice esos datos en su interior para renderizar elementos específicos en la interfaz de usuario. */}
       </div>

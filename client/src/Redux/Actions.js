@@ -50,7 +50,7 @@ export const getCountryByName = (name) => {
         })
     }}
 
-export const getTemperaments = () => {
+export const getAllActivities = () => {
     return async function (dispatch){
         const apiData= await axios.get (`http://localhost:3001/activities`)
         const dataApi=apiData.data

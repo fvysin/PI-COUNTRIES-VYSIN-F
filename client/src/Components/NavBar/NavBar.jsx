@@ -12,7 +12,7 @@ export default function NavBar() {
         // {handleChange}
         > 
         <input
-          placeholder='Busqueda'
+          placeholder='Search'
           type="search" />
         <button
           type='submit'
