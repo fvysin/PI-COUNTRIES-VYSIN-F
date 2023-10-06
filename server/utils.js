@@ -62,12 +62,13 @@ const loadCountries = async () => {
                 where: {
                     name: countryInfo.name,
                     id: countryInfo.id,
-                    area: countryInfo.area,
+                    area: countryInfo.area=== undefined ? 'No information' : countryInfo.area,
                     image: countryInfo.image,
                     population: countryInfo.population,
                     continents: countryInfo.continents,
-                    subregion: countryInfo.subregion === undefined ? 'null' : countryInfo.subregion,
-                    capital: countryInfo.capital === undefined ? 'null' : countryInfo.capital[0]  //&& countryInfo.capital[0],
+                    subregion: countryInfo.subregion === undefined ? 'No information' : countryInfo.subregion,
+                    capital: countryInfo.capital === undefined ? 'No information' : countryInfo.capital[0]  //&& countryInfo.capital[0],
+                    
                 },
 
             });

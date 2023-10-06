@@ -44,6 +44,8 @@ console.log('countryI',countryId)
     <h2>Subregion: {countryId.subregion}</h2>
     <h2>Area: {countryId.area}</h2>
     <h2>Population: {countryId.population}</h2>
+    <h2 >Activities: {countryId.activities}  </h2>   
+
   </section>
 ))}
 </div>

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable no-restricted-globals */
 import style from './Form.module.css'
 import { useState, useEffect } from "react"
@@ -30,68 +31,113 @@ const Form =()=>{
     const [input, setInput]= useState({
         //useState-> estado local para guardar el valor de cada input
         name:"",
-        difficulty:"", 
         duration:"",
-        season: "", 
-        countries: "", 
-        activities:[]
+        difficulty:"", 
+        season: "",  
+        countries:[]
   
     })
     // eslint-disable-next-line no-unused-vars
     const [errors, setErrors]= useState({
         name:"",
-        difficulty:"", 
         duration:"",
+        difficulty:"", 
         season: "", 
-        countries: "", 
-        activities:[]
+        countries: [], 
+     
       
     })
   
 
 const handleChange=(event)=>{
   //se usa para acutalizar el estado local 'input'
-  const nameProp = event.target.name; //separo asi es mas simple
-  const valueProp = event.target.value;
+  const nameProp = event.target.name; //es el nombre del input 'name, difficulty'
+  const valueProp = event.target.value;//lo que escibo en la casilla ej 'florencia'
+  // console.log('targetName', nameProp)
+  // console.log('targetValue', valueProp)
   setInput({
     ...input,
     [nameProp]:valueProp
+    //en la posicion event.target.name voy a guardar el value
   })
 
-  validation ({
+  const errors= validation ({
     ...input,
     [nameProp]:valueProp
   })
 
-  setErrors(validation({
-    ...input, 
-    [nameProp]: valueProp 
-  }))
+  setErrors(errors)
 };
 
 
         
-const handleSubmit = (event) =>{
-        event.preventDefault()
-        dispatch(postActivities(input))
-        alert ('You have successfully created an activity')
-        setInput({
-          name:"",
-          difficulty:"", 
-          duration:"",
-          season: "", 
-          countries: "", 
-          activities:[]
+const handleSubmit = (event) => {
+  event.preventDefault();
+  if (
+    !input.name ||
+    errors.name ||
 
-            })
-          }
+    !input.difficulty ||
+    errors.difficulty ||
 
+    !input.duration ||
+    errors.duration ||
+
+    !input.season ||
+    errors.season ||
+
+    !input.countries ||
+    errors.countries
+  ) {
+    setErrors(validation(input));
+  } else {
+    dispatch(postActivities(input));
+    alert("You have successfully created an activity");
+    setInput({
+      name: "",
+      difficulty: "",
+      duration: "",
+      season: "",
+      countries: [],
+    });
+  }
+  // console.log('handlesubmit', handleSubmit)
+};
+
+
+
+const handleSelect =(event)=>{
+  const nameProp = event.target.name;
+  const valueProp = event.target.value;//lo que escibo en la casilla ej 
+
+  if (nameProp==="countries"){
+    if(input.countries.includes(valueProp))return
+    setInput({
+      ...input,
+      [nameProp]:[...input[nameProp], valueProp]
+    })
+  }
+}
    
+const handleDelete =(event)=>{
+ 
+  setInput({
+    ...input,
+    countries:input.countries.filter((count)=> count!==event.target.id)
+    //el filter es para elimitar un pais seleccionado
+    //en nameProp se actualiza la lista de paisess
+    //actualiza la lista de países en el estado input excluyendo el país que fue clicado (cuyo ID corresponde a event.target.id). Esto se hace utilizando filter() para crear una nueva lista sin el país que se quiere eliminar y luego actualizando el estado del componente con esa nueva lista.
+  })
+}
           
+
+
     return(
         <div>
-         <form className={style.main} onSubmit={handleSubmit}> 
+         <form className={style.form} onSubmit={handleSubmit}> 
          <h1 className={style.titleForm}>CREATE ACTIVITY</h1>
+
+
             <div> 
                 {/* {console.log('errores',errors)} */}
                 {/* //HACER  ESTE CONSOLE.LOG PARA VER QUE APARECE EN LA CONSOLA DE LA WEB, SE PUEDE PONER 'const activities=[ "turismo, ganaderia"]', PARA PROBAR LAS ACTS SI NO LOS TENGO' */}
@@ -100,7 +146,7 @@ const handleSubmit = (event) =>{
                   name="name"
                   value={input.name}
                   onChange={handleChange}
-                  placeholder="Nombre"
+                  placeholder="Name"
                   //poner texto dentro del input
                   type="text" 
                 />
@@ -109,18 +155,7 @@ const handleSubmit = (event) =>{
             </div >
 
 
-            <div>
-                <input 
-                  id= "difficulty"
-                  name="difficulty"
-                  value={input.difficulty}
-                  onChange={handleChange}
-                  placeholder="Difficulty"
-                  type="text" /> 
-                {/* // ESTA BUENO EN TPO NUMBER, ASI APARECE EL PIQUITO PARA SUBIR O BAJAR EL PASO */}
-                {errors.difficulty ? <p>{errors.difficulty}</p> : null}
-               
-            </div>
+
             <div>
                 <input
                   name="duration"
@@ -129,76 +164,97 @@ const handleSubmit = (event) =>{
                   placeholder="Duration"
                   type="text" />
                 {errors.duration ? <p>{errors.duration}</p> : null}
-                {/* {console.log('formheightmax',errors.height_max)} */}
-
             </div>
 
-            <div>
-                <input 
-                  id= "season"
-                  name="season"
-                  value={input.season}
+            <div className={style.column}>
+              <div className={style.div}>
+                <label className={style.label}>Difficulty</label>
+                <select
+                  name="difficulty"
                   onChange={handleChange}
-                  placeholder="Season"
-                  type="radio" />Summer
-                  <br/>
-                <input 
-                  id= "season"
+                  value={input.difficulty}
+                  className={style.input}
+                >
+                  <option value="">--Select Difficulty--</option>
+                  <option value="1">⭐ ☆ ☆ ☆ ☆</option>
+                  <option value="2">⭐⭐ ☆ ☆ ☆</option>
+                  <option value="3">⭐⭐⭐ ☆ ☆</option>
+                  <option value="4">⭐⭐⭐⭐ ☆</option>
+                  <option value="5">⭐⭐⭐⭐⭐</option>
+                </select>
+              </div>
+              {errors.difficulty ? <p>{errors.difficulty}</p> : null}
+            </div>
+
+
+
+
+  
+
+
+        <div className={style.column}>
+              <div className={style.div}>
+                <label className={style.label}>Season</label>
+                <select
                   name="season"
-                  value={input.season}
                   onChange={handleChange}
-                  placeholder="Season"
-                  type="radio" />Autumn
-                  <br/>
-                <input 
-                  id= "season"
-                  name="season"
+                  className={style.input}
                   value={input.season}
-                  onChange={handleChange}
-                  placeholder="Season"
-                  type="radio" />Winter     
-              <br/>
-                <input 
-                  id= "season"
-                  name="season"
-                  value={input.season}
-                  onChange={handleChange}
-                  placeholder="Season"
-                  type="radio" />Spring
+                >
+                  <option value="">--Select Season--</option>
+                  <option value="Summer">Summer</option>
+                  <option value="Autumn">Autumn</option>
+                  <option value="Winter">Winter</option>
+                  <option value="Spring">Spring</option>
+                </select>
+              </div>
                 {errors.season ? <p>{errors.season}</p> : null}
-            </div>
-            <br/>
+            </div> 
+          
             
+
             <div>
-            <label> Countries </label>
-            <br/>  
            
+            <br/>  
             <select
-              onChange={handleChange}  
               name ="countries" 
               id="countries" 
               value={input.countries}
-              multiple={true}
-              type="text">
-            {allCountries?.map(country => (
-            <option key={country.id} value={country.name}>
-             {country.name}
+              onChange={handleSelect}  
+             
+             
+              >
+            <option value=''>--Select Countries--</option>
+            {allCountries?.map(countries => 
+            <option key={countries.id} value={countries.name}>
+             {countries.name}
              </option>
-            ))}
+            )}
              </select>
+             <div>
+            {
+            input.countries.map((coun)=> 
+            <div>
+         <label>{coun}</label> 
+          <button 
+          name='countries' 
+          id={coun} 
+          onClick={handleDelete}
+          >X</button>
+            </div>)
+                }
+              </div>
           </div>
         
 
             <div>
-
-                {/* // de esta forma inhabilito el boton...pongo todos los errores */}
-            {errors.name  || errors.season || errors.duration? null: 
             <button  
-            type="submit">
+            type="submit"
+            onClick={handleSubmit}>
             CREATE ACTIVITY
             </button>
-            }
-                </div>
+            
+            </div>
 
 
         </form>

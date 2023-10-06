@@ -5,9 +5,13 @@ import {
     GET_BY_NAME,
     GET_ALL_ACTIVITIES,
     FILTER,
-    ORDER,
+    // NEXT_PAGE,
+    // PREV_PAGE,
+    // NUMBER_PAGE,
     POST,
-    CLEAR
+    CLEAR,
+    // PAGINATE
+
 } from './actionsTypes'
 
 
@@ -16,7 +20,7 @@ export const getAllCountries=()=>{
     return async function(dispatch){
 
         const apiData= await axios.get ("http://localhost:3001/countries")
-        console.log ('apidata actions', apiData)
+        // console.log ('apidata actions', apiData)
         const dataApi= apiData.data
         dispatch({
             type: GET_ALL_COUNTRIES,
@@ -61,10 +65,12 @@ export const getAllActivities = () => {
                      
      }}
 
-export const postActivities = (actPosteo) => {
+export const postActivities = (input) => {
  return async function (dispatch){
-        const apiData= await axios.post (`http://localhost:3001/activities`, actPosteo)
+        const apiData= await axios.post (`http://localhost:3001/activities`, input)
         const dataApi=apiData.data
+        console.log('actions post ', dataApi)
+        // console.log('apidata', apiData)
         dispatch({
             type: POST,
              payload: dataApi
@@ -73,7 +79,7 @@ export const postActivities = (actPosteo) => {
     }
     
 
-    export function clear() {
+    export const clear=()=> {
         return function (dispatch) {
           dispatch({
             type: CLEAR,
@@ -81,7 +87,7 @@ export const postActivities = (actPosteo) => {
         };
       }
 
-export function continentFilter(order) {
+export const continentFilter=(order) =>{
     return function (dispatch) {
       dispatch({
         type: FILTER,
@@ -90,8 +96,15 @@ export function continentFilter(order) {
     };
   }
 
-  export const order = (order) => {
-    return { 
-        type: ORDER, 
-        payload: order }
-};
+
+
+// export const paginate =(order)=>{
+//     console.log('paginate', order)
+//     return function (dispatch){
+//         dispatch({
+//             type:PAGINATE ,
+//             payload:order
+//         })
+
+//     }
+// }

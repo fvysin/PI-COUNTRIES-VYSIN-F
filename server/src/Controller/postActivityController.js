@@ -1,55 +1,9 @@
 
 
-// const {Activity, Country} = require ("../db");
-
-// const postActivityController = async (name, difficulty, duration, season, countries) => {
-//     if (!name || !difficulty || !season || !countries) {
-//         throw new Error("No se puede crear la actividad. Faltan datos");
-//     } else {
-
-//         let arrayOfCountries = [];
-
-//         // for (const country of countries) {
-//         //     let addCountry = await Country.findByPk(country); 
-//         //     if (!addCountry) {
-//         //         throw new Error(`Pais con el Id ${country} inexistente.`);
-//         //     }
-//         //     arrayOfCountries.push(addCountry); 
-//         // }
-
-
-// }
-//       }
-
-//         const newActivity = await Activity.create({
-//           name,
-//           difficulty,
-//           duration,
-//           season
-//         });
-
-
-
-
-
-
-        
-//         await newActivity.addCountries(arrayOfCountries); //le relaciono el array con los paises en la tabla intermedia
-// console.log('arrayOfCount',arrayOfCountries)
-//         // console.log ('newActivi', newActivity)
-//         return newActivity;
-//     }
-// };
-
-// module.exports = {
-//   postActivityController
-// };
-
-
 
 const { Activity, Country } = require('../db.js');
 
-const postActivityController = async (name, difficulty, duration, season, countries) => {
+const postActivityController = async (name,duration, difficulty,  season, countries) => {
     if (!name || !difficulty || !season || !countries) {
         throw new Error('Faltan datos');
     } else {
@@ -71,8 +25,8 @@ const postActivityController = async (name, difficulty, duration, season, countr
 
         const newActivity = await Activity.create({
             name,
-            difficulty,
             duration,
+            difficulty,
             season
         });
 

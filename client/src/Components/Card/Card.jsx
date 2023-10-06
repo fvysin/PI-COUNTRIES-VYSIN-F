@@ -9,6 +9,7 @@ const Card=({id, name, image, continents })=> {
   return (
     <div className={style.container}>
     <Link to={`/countries/`+ id} >
+      <br></br>
     <h4 className={style.name}>{name}</h4>
     </Link>
     <img src={image} alt={""} className={style.image}/>

@@ -5,7 +5,7 @@
     flex-wrap: wrap;
     overflow: hidden;
     justify-content:space-between;
-    width:auto;
+    width:fit-content;
     border-radius:40px;
     height:min-content;
     padding: 5 em;

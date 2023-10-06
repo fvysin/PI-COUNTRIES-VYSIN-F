@@ -4,6 +4,7 @@ import Card from '../Card/Card';
 
 const Cards=({countries})=> {
   //recibe 'countries' que viene del Home
+  // console.log('avtivities', countries)
     return (
    <div className={style.container}>
       {countries?.map (user=>
