@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import {getAllCountries, postActivities} from '../../Redux/actions'
 import validation from './validation'
+import { Link } from 'react-router-dom'
 
 
 
@@ -91,7 +92,8 @@ const handleSubmit = (event) => {
   ) {
     setErrors(validation(input));
   } else {
-    dispatch(postActivities(input));
+    dispatch(postActivities(input))
+    
     alert("You have successfully created an activity");
     setInput({
       name: "",
@@ -134,6 +136,9 @@ const handleDelete =(event)=>{
 
     return(
         <div>
+            <Link to ="/Home">
+        <button className={style.button}>BACK ⬅️ </button>
+        </Link>
          <form className={style.form} onSubmit={handleSubmit}> 
          <h1 className={style.titleForm}>CREATE ACTIVITY</h1>
 

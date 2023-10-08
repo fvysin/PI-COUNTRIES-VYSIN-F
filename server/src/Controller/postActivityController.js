@@ -4,6 +4,7 @@
 const { Activity, Country } = require('../db.js');
 
 const postActivityController = async (name,duration, difficulty,  season, countries) => {
+    // console.log('post controller', name, duration, season, countries)
     if (!name || !difficulty || !season || !countries) {
         throw new Error('Faltan datos');
     } else {

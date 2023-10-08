@@ -4,21 +4,23 @@ import Detail from './Components/Detail/Detail'
 import Form from './Components/Form/Form'
 import Home from './Components/Home/Home'
 import Landing from './Components/Landing/Landing'
-import NavBar from './Components/NavBar/NavBar'
-import { useLocation } from 'react-router-dom'
+import About from './Components/About/About'
+
+
 
 const  App= ()=> {
 
 
-  const {pathname} = useLocation()
   return (
       <div>
-         {pathname !== '/' && <NavBar/>}
+      
       <Routes>
-          <Route  path="/" element={<Landing/>} />
+          <Route  exact path="/" element={<Landing/>} />
           <Route  path= "/home" element={<Home/>} />
-          <Route  path= "/countries/:id" element={<Detail/>} />
+          <Route exact path= "/countries/:id" element={<Detail/>} />
           <Route  path= "/form" element={<Form/>} />
+          <Route path="/about" element={<About/>}/>
+          
       </Routes>
        
       </div>

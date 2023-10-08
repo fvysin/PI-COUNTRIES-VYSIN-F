@@ -4,13 +4,13 @@ import {
     GET_BY_ID,
     GET_BY_NAME,
     GET_ALL_ACTIVITIES,
-    FILTER,
-    // NEXT_PAGE,
-    // PREV_PAGE,
-    // NUMBER_PAGE,
+    FILTER_COUNTRY_BY_ACTIVITY,
+    FILTER_COUNTRY_BY_CONTINENT,
     POST,
     CLEAR,
-    // PAGINATE
+    ORDER_BY_NAME,
+    ORDER_BY_POPULATION,
+    // UPDATE_ACTIVITY
 
 } from './actionsTypes'
 
@@ -69,7 +69,7 @@ export const postActivities = (input) => {
  return async function (dispatch){
         const apiData= await axios.post (`http://localhost:3001/activities`, input)
         const dataApi=apiData.data
-        console.log('actions post ', dataApi)
+        // console.log('actions post ', dataApi)
         // console.log('apidata', apiData)
         dispatch({
             type: POST,
@@ -78,7 +78,19 @@ export const postActivities = (input) => {
     }     
     }
     
-
+    // export const updateActivity = (payload) => {
+    //     return async (dispatch) => {
+         
+    
+    //             const { data } = await axios.put(`http://localhost:3001/activities${payload.id}`, payload);
+    //             dispatch({
+    //                 type: UPDATE_ACTIVITY,
+    //                 payload: data
+    //             })
+    
+    //         }
+    //     }
+    
     export const clear=()=> {
         return function (dispatch) {
           dispatch({
@@ -87,24 +99,39 @@ export const postActivities = (input) => {
         };
       }
 
-export const continentFilter=(order) =>{
+export const continentFilter=(continent) =>{
     return function (dispatch) {
       dispatch({
-        type: FILTER,
-        payload: order,
+        type: FILTER_COUNTRY_BY_CONTINENT,
+        payload: continent,
       });
     };
   }
 
+  
+  export const activityFilter=(activity) =>{
+      return function (dispatch) {
+        dispatch({
+          type: FILTER_COUNTRY_BY_ACTIVITY,
+          payload: activity,
+        });
+      };
+    }
 
 
-// export const paginate =(order)=>{
-//     console.log('paginate', order)
-//     return function (dispatch){
-//         dispatch({
-//             type:PAGINATE ,
-//             payload:order
-//         })
-
-//     }
-// }
+export const orderByName=(name)=>{
+    return function (dispatch){
+        dispatch({
+            type: ORDER_BY_NAME,
+            payload:name,
+        })
+    }
+}
+export const orderByPopulation=(population)=>{
+    return function (dispatch){
+        dispatch({
+            type: ORDER_BY_POPULATION,
+            payload:population,
+        })
+    }
+}

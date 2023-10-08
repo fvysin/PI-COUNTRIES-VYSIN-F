@@ -1,124 +1,19 @@
-// /* eslint-disable no-unused-vars */
-// // import { useEffect, useState } from "react";
-// // import Cards from "../Cards/Cards"
-// // import { useDispatch} from 'react-redux'
-// // import { useSelector } from 'react-redux';
-// // import { getAllCountries, getAllActivities,  } from "../../Redux/actions";
-// // import Pagination from '../Pagination/Pagination'
 
-// // const Home=()=> {
-
-// //   const countries= useSelector(state=>state.countries.sort((a, b) => {
-// //     if (a.name < b.name) return -1;
-// //     if (a.name > b.name) return 1;
-// //     return 0;
-// // }))
-
-// //   const dispatch= useDispatch()
-// //   // const [loading, setLoading]= useState(true)
-// //   // const page= useSelector ((state)=>state.currentPage)
-// //   // const numCountries=useSelector ((state)=>state.filteredCountries)
-// //   // console.log('numcountries', numCountries)
-
-
-
-// //   const [pagina, setPagina]= useState(1)
-// //   const [porPag, setPorPagina]=useState(10)
-// //   const maximo=countries.length /porPag
-
-// //   // const maxPage=Math.ceil(numCountries.length / 10)
-// //     // console.log('math', maxPage)
- 
-// //   useEffect(()=>{
-// //     dispatch(getAllCountries())
-// //     dispatch(getAllActivities())
-    
-// //     // setLoading(true)
-// //     // setTimeout(()=> setLoading(false), 1000)
-
-// //   // eslint-disable-next-line react-hooks/exhaustive-deps
-// //   }, [dispatch])
-
-
-// //   return (
-// //     <div className="video-background">
-  
-// //          <Pagination page={page} maxPage={maxPage} />
-    
-// //           <Cards countries={countries} />
-
-   
-         
-// //       </div>
-// //   )
-// // }
-
-
-
-// // export default Home
-
-
-
-
-
-// import { useEffect, useState } from "react";
-// import Cards from "../Cards/Cards"
-// import { useDispatch} from 'react-redux'
-// import { useSelector } from 'react-redux';
-// import { getAllCountries, getAllActivities,  } from "../../Redux/actions";
-// import Pagination from '../Pagination/Pagination'
-
-// const Home=()=> {
-
-
-//     const countries= useSelector(state=>state.countries)
-// //       .sort((a, b) => {
-// //     if (a.name < b.name) return -1;
-// //     if (a.name > b.name) return 1;
-// //     return 0;
-// // }))
-
-//   const dispatch= useDispatch()
-
-
-
-// const [pagina, setPagina]= useState(1)
-// const [porPag, setPorPagina]=useState(10)
-// const maximo=countries.length /porPag
-
-
-
-// useEffect(()=>{
-//       dispatch(getAllCountries())
-//       dispatch(getAllActivities())
-//     }, [dispatch])
-
-
-// return (
-//   <div className="video-background">
-
-//   {countries
-//   .slice(pagina -1) * porPag (pagina-1)* porPag + porPag}
-// <div>
-//   <Pagination pagina ={pagina} setPagina={setPagina} maximo={maximo}/>
-//   <Cards countries={countries} />
-
-// </div>
-// </div>
-// )
-
-// }
-
-
-// export default Home
-
-
-
-import  { useEffect, useState } from "react";
+import style from './Home.module.css'
+// import About from '../About/About';
 import Cards from "../Cards/Cards"
+import NavBar from "../NavBar/NavBar";
+import Pagination from '../Pagination/Pagination'
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCountries, getAllActivities } from "../../Redux/actions";
-import Pagination from '../Pagination/Pagination';
+import {
+  orderByName,
+  orderByPopulation,
+  activityFilter,
+  continentFilter,
+} from '../../Redux/actions'
 
 const Home = () => {
   const countries = useSelector(state => state.countries);
@@ -131,18 +26,95 @@ const Home = () => {
   useEffect(() => {
     dispatch(getAllCountries());
     dispatch(getAllActivities());
+
+    setPagina(1);
   }, [dispatch]);
+
+ 
 
   const paginacionInicio = (pagina - 1) * porPag;
   const paginacionFin = pagina * porPag;
   const paisesPaginados = countries.slice(paginacionInicio, paginacionFin);
 
+
+  const handleFilter = (e) => {
+    if (e.target.value === "all") {
+      dispatch(continentFilter(e.target.value));
+    }
+    if (
+      e.target.value === "North America" ||
+      e.target.value === "South America" ||
+      e.target.value === "Europe" ||
+      e.target.value === "Africa" ||
+      e.target.value === "Asia" ||
+      e.target.value === "Oceania" ||
+      e.target.value === "Antarctica"
+    ) {
+      dispatch(continentFilter(e.target.value));
+    }
+    if (e.target.value === "activity") {
+      dispatch(activityFilter(e.target.value));
+    }
+  };
+
+  const handleOrder = (e) => {
+    if (e.target.value === "all") {
+      dispatch(orderByName(e.target.value));
+    }
+    if (e.target.value === "asc") {
+      dispatch(orderByName(e.target.value));
+    }
+    if (e.target.value === "desc") {
+      dispatch(orderByName(e.target.value));
+    }
+    if (e.target.value === "pop") {
+      dispatch(orderByPopulation(e.target.value));
+    }
+  };
+
+  
   return (
+    
     <div className="video-background">
+      <NavBar setPagina={setPagina}/>
+      <div>
+        <select
+          onChange={handleOrder}
+          className={style.selectStyle}
+        >
+          <option value="all">All</option>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+          <option value="pop">Population</option>
+        </select>
+
+        <select
+          onChange={handleFilter}
+          className={style.selectStyle}
+        >
+          <option value="all">All</option>
+          <option value="activity">Activity</option>
+          <option value="North America"> North America</option>
+          <option value="South America"> South America</option>
+          <option value="Europe"> Europe</option>
+          <option value="Africa"> Africa</option>
+          <option value="Asia"> Asia</option>
+          <option value="Oceania"> Oceania</option>
+          <option value="Antarctica"> Antarctica</option>
+        </select>
+      </div>
+
+
       <Pagination pagina={pagina} setPagina={setPagina} maximo={maximo} />
       <div>
         <Cards countries={paisesPaginados} />
       </div>
+
+      {/* <Link to={'/About'} className={style.ul} >About </Link> */}
+
+      <Link to="/about">
+          <button className={style.button}>About </button>
+        </Link>
     </div>
   );
 }

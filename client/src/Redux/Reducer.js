@@ -5,12 +5,13 @@ import {
     GET_BY_ID,
     GET_BY_NAME,
     POST,
-    // NEXT_PAGE,
-    // PREV_PAGE,
-    // NUMBER_PAGE,
-    // PAGINATE,
+    FILTER_COUNTRY_BY_CONTINENT,
+    FILTER_COUNTRY_BY_ACTIVITY,
     CLEAR,
-    // FILTER
+    ORDER_BY_NAME,
+    ORDER_BY_POPULATION,
+    // FILTER,
+    // UPDATE_ACTIVITY
 } from './actionsTypes'
 
 let initialState={
@@ -41,84 +42,96 @@ const  reducer=(state= initialState, action)=> {
                 countryCopy:action.payload,
                 filteredCountries:action.payload
             }
-            case GET_BY_ID:
-                return {
-                ...state, 
-                  countryId: action.payload}
+        case GET_BY_ID:
+             return {
+            ...state, 
+               countryId: action.payload}
             
-            case GET_BY_NAME:
-                return {
-                    ...state, 
-                    countries:action.payload,
-                    filteredCountries:action.payload
-                  }
+        case GET_BY_NAME:
+            return {
+                 ...state, 
+                 countries:action.payload,
+                 filteredCountries:action.payload
+               }
     
-            case GET_ALL_ACTIVITIES:
-                return{
-                    ...state,
-                    activities:action.payload
-                     };
+        case GET_ALL_ACTIVITIES:
+            return{
+                ...state,
+                activities:action.payload
+                 };
             
-            case CLEAR:
-            return { 
-                    ...state,
-                    countryId: [],          
-                };
+        case CLEAR:
+        return { 
+            ...state,
+                 countryId: [],          
+            };
 
                 
-            case POST:
-                    // return{
-                    // ...state,
-                    // activities:[...state.activities, action.payload]
-                    // };
-                    return {
-                        ...state,
-                        countries: [...state.countries].map((country) => {
-                          if (country.id === action.payload.id) {
-                            return {
-                              ...country,
-                              activities: [...country.activities, action.payload],
-                            };
-                          } else {
-                            return country;
-                          }
-                        }),
-                      };
+         case POST:
+                 return {
+                    ...state,
+                    countries: [...state.countries].map((country) => {
+                      if (country.id === action.payload.id) {
+                        return {
+                          ...country,
+                          activities: [...country.activities, action.payload],
+                         };
+                      } else {
+                        return country;
+                       }
+                     }),
+                   };
 
-            // case PAGINATE:
-            //   // const next_page = state.currentPage + 1;
-            //   // const prev_page = state.currentPage - 1;
-            //   // const firstIndex = action.payload === "next" ? next_page * itemsPerPage : prev_page * itemsPerPage;
-            //   // const lastIndex= firstIndex + itemsPerPage
+         case FILTER_COUNTRY_BY_ACTIVITY:
+          const filteredActivity= state.countryCopy.filter((country)=>country.activities.length>0)
+          ///countryCopy
+          return { 
+             ...state,
+              countries: [...filteredActivity],          
+               };
 
-            //   // if (action.payload === "next" && lastIndex >= state.filteredCountries.length) return state;
-            //   // if (action.payload === "prev" && prev_page < 0) return state;
-              
-            //   // return {
-            //   //     ...state,
-            //   //     allCountries: state.filteredCountries.slice(firstIndex, itemsPerPage),
-            //   //                                                 //0           10
-            //   //     currentPage: action.payload === "next" ? next_page : prev_page,
+        case FILTER_COUNTRY_BY_CONTINENT:
+          const filteredContinent= state.countryCopy.filter((country)=>country.continents===action.payload)
+              return { 
+                    ...state,
+                     countries: action.payload === "all" ? state.countryCopy:[...filteredContinent],          
+                  } ;
 
-            //   // };
-            //   const itemsPerPage = 10;
-            //   const next_page = state.currentPage + 1;
-            //   const prev_page = state.currentPage - 1;
-            //   const firstIndex = action.payload === "next" ? next_page * itemsPerPage : prev_page * itemsPerPage;
-            //   const lastIndex = firstIndex + itemsPerPage;
 
-            //   if (action.payload === "next" && lastIndex >= state.countryCopy.length) return state;
-            //   if (action.payload === "prev" && prev_page < 0) return state;
+          case ORDER_BY_NAME:
+            const orderedByName = [...state.countries].sort((a, b) => {
+              if (action.payload === "asc") {
+                return a.name.localeCompare(b.name);
+              } else {
+                return b.name.localeCompare(a.name);
+              }
+            })
+                return {
+                  ...state,
+                  countries: action.payload==="all" ? state.countryCopy: [...orderedByName],
+                };
+            
 
+          case ORDER_BY_POPULATION:
+            const orderByPopulation = [...state.countries].sort((a, b) => {
+              if (action.payload === "asc") {
+                return a.population - b.population;
+              } else {
+                return b.population - a.population;
+              }
+            });
+            return {
+              ...state,
+              countries: action.payload==="all" ? state.countryCopy:[...orderByPopulation]
+            };
+           
+            // case UPDATE_ACTIVITY:
             //   return {
             //       ...state,
-            //       allCountries: state.countryCopy.slice(firstIndex, lastIndex),
-            //       currentPage: action.payload === "next" ? next_page : prev_page,
-            //   };
-
-
-              
-
+            //       activities: state.activities.map(activity => activity.id === action.payload.id ? action.payload : activity),
+            //       isLoading: false,
+            //   }
+            
 
             default:
             return state

@@ -12,6 +12,7 @@
     border: 2px solid black;
     margin-top: 16cm;
 
+
 }
 
 .button:hover {
@@ -26,6 +27,7 @@
     background-size: cover;
     display: flex;
     flex-direction: column;
+    background-image:("/Users/florvysin/Desktop/COUNTRIES ORIGINAL/client/src/Components/Image/Diseño sin título (2).png") ;
  
 /* background-image:url("/Users/florvysin/Downloads/COUNTRIES ORIGINAL/client/src/Components/Image/Diseño sin título (2).png");    */
 /* // copiar ruta de acceso */
