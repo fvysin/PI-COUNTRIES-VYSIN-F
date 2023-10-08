@@ -226,26 +226,26 @@ const handleDelete =(event)=>{
               id="countries" 
               value={input.countries}
               onChange={handleSelect}  
-             
-             
+              //maneja los cambios en el menú desplegable. Cuando el usuario selecciona un país, este país se agrega al estado input.countries
               >
-            <option value=''>--Select Countries--</option>
-            {allCountries?.map(countries => 
-            <option key={countries.id} value={countries.name}>
-             {countries.name}
-             </option>
-            )}
+              <option value=''>--Select Countries--</option>
+                {allCountries?.map(countries => 
+                <option key={countries.id} value={countries.name}>
+                {countries.name}
+              </option>
+              )}
              </select>
+             
              <div>
-            {
-            input.countries.map((coun)=> 
+              {
+              input.countries.map((coun)=> 
             <div>
-         <label>{coun}</label> 
-          <button 
-          name='countries' 
-          id={coun} 
-          onClick={handleDelete}
-          >X</button>
+           <label>{coun}</label> 
+            <button 
+              name='countries' 
+              id={coun} 
+              onClick={handleDelete}
+              >X</button>
             </div>)
                 }
               </div>

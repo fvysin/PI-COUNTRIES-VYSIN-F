@@ -6,7 +6,7 @@ const Landing=()=> {
     return (
       <div className={style.landing}>
         <Link to ="/Home">
-        <button className={style.button}>ENTRAR</button>
+        <button className={style.button}>GO!</button>
 
         </Link>
             
