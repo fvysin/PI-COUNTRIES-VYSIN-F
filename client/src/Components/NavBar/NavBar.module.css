@@ -1,27 +1,66 @@
-.container{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 1%;
-    padding-bottom: 1%;
-
-    background-color: rgba(164, 60, 60, 0.6);
-    border-radius: 15px;
-    box-shadow: 10px, 10px, 5px, purple;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    width: 100%;
-}
 
 
-.ul {
-    list-style-type: none;
-    display: inline-block;
-    padding: 10px 20px;
-    color: #f1f1f1;
-    font-weight: bold;
-}
-
-.ul :hover {
-    color: #029ca6;
-    transition: .3s;
-}
+        .container {
+            height: 70px;
+            background: rgba(0, 0, 0, 0.5);
+            border-bottom: 2px solid #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px; 
+            margin-right: 50px;
+          }
+          
+          .searchContainer {
+            display: flex;
+            align-items: center;
+          }
+          
+          .searchForm {
+            display: flex;
+            align-items: center;
+          }
+          
+          .search {
+            width: 350px; 
+            height: 30px;
+            border: none;
+            outline: none;
+            background: #f2f2f2;
+            border-radius: 30px;
+            font-size: 14px;
+            text-align: center;
+            margin-right: 8px; 
+          }
+          
+          .searchButton {
+            width: 35px; 
+            height: 35px;
+            border-radius: 50%;
+            background: #fff;
+            color: #000;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+          }
+          
+          .navLink {
+            display: flex;
+            align-items: center;
+          }
+          
+          .navItem {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            padding: 0 15px; 
+            transition: 0.7s all;
+            margin-right: 90px;
+          }
+          
+          .navItem:hover {
+            color: #029ca6;
+          }
+          

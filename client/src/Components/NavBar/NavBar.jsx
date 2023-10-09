@@ -16,10 +16,15 @@ const NavBar=({setPagina}) =>{
   }
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit =async (event) => {
     event.preventDefault();
-    dispatch(getCountryByName(searchValue));
+    try{
 
+      await dispatch(getCountryByName(searchValue));
+    
+    }catch(error){
+      alert('Error, no country found');
+    }
     setPagina(1);
     cleanForm(event.target);
   };
@@ -41,34 +46,30 @@ const handleHomeClick = () => {
 
 
   return (
-    <div className={style.container}>
-         <div className='nav-link-cont'>
+<div className={style.container}>
 
-        <Link to={'/Home'} className={style.ul} onClick={handleHomeClick}>Home </Link>
-        <Link to ={"/form"} className={style.ul}>Form </Link>
-         </div>
-      
-      <div>
-        <form onSubmit={handleSubmit}> 
-          <input
-            placeholder='Search'
-            type="search" 
-            onChange={handleChange}
-            value={searchValue}   
-           />
-           
-            <button type='submit'className={style.btn} 
-            >Buscar
-          </button>
-          
-      </form>
-        </div>
+  <div className={style.navLink}>
+    <Link to={'/Home'} className={style.navItem} onClick={handleHomeClick}>HOME </Link>
+    <Link to={"/form"} className={style.navItem}>FORM </Link>
+    <Link to={"/about"} className={style.navItem}>ABOUT</Link>
+  </div>
 
+  <div className={style.searchContainer}>
+    <form onSubmit={handleSubmit} className={style.searchForm}>
+      <input
+        placeholder='Search a country'
+        type="search"
+        onChange={handleChange}
+        value={searchValue}
+        className={style.search}
+      />
+      <button type='submit' className={style.searchButton}>🔍</button>
+    </form>
+  </div>
 
+</div>
 
-
-    </div>
-  )
+  );
 }
 
 

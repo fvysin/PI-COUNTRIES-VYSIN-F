@@ -6,11 +6,10 @@
     overflow: hidden;
     justify-content:space-between;
     width:fit-content;
-    border-radius:40px;
+    border-radius:30px;
     height:min-content;
-    padding: 5 em;
+    /* padding: 4 em; */
     justify-content:center;
-    margin-bottom: 2em;
     border-spacing: 10 px 5px;
     
     

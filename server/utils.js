@@ -47,7 +47,7 @@ const loadCountries = async () => {
         // console.log('dataapi', data)
         for (let i = 0; i < data.length; i++) {
             let countryInfo = {
-                name: data[i].name.official,
+                name: data[i].name.common,
                 id: data[i].cca3,
                 area: data[i].area,
                 image: data[i].flags.png,

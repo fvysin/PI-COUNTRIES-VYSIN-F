@@ -10,6 +10,7 @@ import {
     CLEAR,
     ORDER_BY_NAME,
     ORDER_BY_POPULATION,
+    SEARCH_ID_KEEP
     // UPDATE_ACTIVITY
 
 } from './actionsTypes'
@@ -40,7 +41,7 @@ export const getCountryById = (id) => {
                 payload: dataApi
             })   
         } catch (error) {
-            console.log("No se ha encontrado el país")
+            alert("No se ha encontrado el país")
             
         }}}
 
@@ -135,3 +136,10 @@ export const orderByPopulation=(population)=>{
         })
     }
 }
+
+export const searchIdKeep = (query, results) => {
+    return {
+      type: SEARCH_ID_KEEP,
+      payload: query, results
+    };
+  };

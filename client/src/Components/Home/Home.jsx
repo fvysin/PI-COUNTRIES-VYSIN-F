@@ -4,7 +4,6 @@ import style from './Home.module.css'
 import Cards from "../Cards/Cards"
 import NavBar from "../NavBar/NavBar";
 import Pagination from '../Pagination/Pagination'
-import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCountries, getAllActivities } from "../../Redux/actions";
@@ -37,7 +36,7 @@ const Home = () => {
   const paisesPaginados = countries.slice(paginacionInicio, paginacionFin);
 
 
-  const handleFilter = (e) => {
+  const handleFilterContinent = (e) => {
     if (e.target.value === "all") {
       dispatch(continentFilter(e.target.value));
     }
@@ -52,12 +51,24 @@ const Home = () => {
     ) {
       dispatch(continentFilter(e.target.value));
     }
+   
+  };
+
+
+  const handleFilterActivity = (e) => {
     if (e.target.value === "activity") {
       dispatch(activityFilter(e.target.value));
     }
   };
 
-  const handleOrder = (e) => {
+
+  const handleOrderPopulation = (e) => {
+    if (e.target.value === "pop") {
+      dispatch(orderByPopulation(e.target.value));
+    }
+  };
+
+  const handleOrderName = (e) => {
     if (e.target.value === "all") {
       dispatch(orderByName(e.target.value));
     }
@@ -67,33 +78,36 @@ const Home = () => {
     if (e.target.value === "desc") {
       dispatch(orderByName(e.target.value));
     }
-    if (e.target.value === "pop") {
-      dispatch(orderByPopulation(e.target.value));
-    }
+    
   };
-
   
   return (
     
-    <div className="video-background">
+    <div className={style.container}>
       <NavBar setPagina={setPagina}/>
-      <div>
+      
+      <div className={style.divFilters}>
         <select
-          onChange={handleOrder}
+          onChange={handleOrderName}
           className={style.selectStyle}
         >
-          <option value="all">All</option>
+          <option value="order">--Order by Name--</option>
           <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
+        </select>
+
+        <select
+          onChange={handleOrderPopulation}
+          className={style.selectStyle}>
+          <option value="order">--Order by Population--</option>
           <option value="pop">Population</option>
         </select>
 
         <select
-          onChange={handleFilter}
+          onChange={handleFilterContinent}
           className={style.selectStyle}
         >
-          <option value="all">All</option>
-          <option value="activity">Activity</option>
+          <option value="all">--Filter by Continent--</option>
           <option value="North America"> North America</option>
           <option value="South America"> South America</option>
           <option value="Europe"> Europe</option>
@@ -102,19 +116,29 @@ const Home = () => {
           <option value="Oceania"> Oceania</option>
           <option value="Antarctica"> Antarctica</option>
         </select>
+
+
+        <select
+          onChange={handleFilterActivity}
+          className={style.selectStyle}
+        >
+          <option value="activity">--Filter by Activity</option>
+          <option value="activity">Activity</option>
+       
+        </select>
+
+
+
+
+
+      </div>
+      <div className={style.containerSec}>
+
+        <Cards countries={paisesPaginados}  clasName={style.cards}/>
+     
+      <Pagination pagina={pagina} setPagina={setPagina} maximo={maximo}clasName={style.paginado} />
       </div>
 
-
-      <Pagination pagina={pagina} setPagina={setPagina} maximo={maximo} />
-      <div>
-        <Cards countries={paisesPaginados} />
-      </div>
-
-      {/* <Link to={'/About'} className={style.ul} >About </Link> */}
-
-      <Link to="/about">
-          <button className={style.button}>About </button>
-        </Link>
     </div>
   );
 }

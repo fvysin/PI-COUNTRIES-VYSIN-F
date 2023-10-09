@@ -10,6 +10,7 @@ import {
     CLEAR,
     ORDER_BY_NAME,
     ORDER_BY_POPULATION,
+    SEARCH_ID_KEEP,
     // FILTER,
     // UPDATE_ACTIVITY
 } from './actionsTypes'
@@ -22,7 +23,8 @@ let initialState={
     countryName:[],
     postActivity:[],
     currentPage:0,
-    filteredCountries:[]
+    filteredCountries:[],
+    searchIdKeep:[]
 }
 
 
@@ -132,6 +134,12 @@ const  reducer=(state= initialState, action)=> {
             //       isLoading: false,
             //   }
             
+            case SEARCH_ID_KEEP:
+              return {
+                ...state,
+                searchIdKeep: action.payload,
+              };
+          
 
             default:
             return state
