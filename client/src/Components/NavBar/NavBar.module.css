@@ -8,7 +8,7 @@
             justify-content: center;
             align-items: center;
             padding: 0 20px; 
-            margin-right: 50px;
+            
           }
           
           .searchContainer {
@@ -61,6 +61,18 @@
           }
           
           .navItem:hover {
-            color: #029ca6;
+            color:  #1de9e2;
+          }
+          
+
+          .logo {
+           width: 40px; 
+            height: auto; 
+            margin-right: 90px; 
+            border-radius: 50%; 
+        
+            display: flex;
+            justify-content: space-between;
+          
           }
           

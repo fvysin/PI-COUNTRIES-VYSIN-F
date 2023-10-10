@@ -1,5 +1,6 @@
 .container{
-    background-image: url('../Image/massimiliano-reginato-NgnxWU1r9To-unsplash.jpg');
+    background-image: url('../Image/pexels-josh-sorenson-977603.jpg');
+
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
@@ -11,17 +12,7 @@
     position: fixed;
 
 }
-/* 
-.containerSec{
 
-}
-.cards{
-
-}
-
-.paginado{
-
-} */
 
 .divFilters {
     display: flex;
@@ -33,15 +24,15 @@
 }
 
 .selectStyle {
-    background-color: rgba(106, 199, 207, 0.941);
+    background-color:  #f7ffff;
     text-align: center;
     height: 3.5vh;
     width: 15vw;
     margin: 0 0.25em;
     border-radius: 1em;
 }
-.selFilters:hover{
+/* .selFilters:hover{
     cursor: pointer;
     background-color: rgba(198, 71, 48, 0.853);
     color: #fff;
-}
+} */

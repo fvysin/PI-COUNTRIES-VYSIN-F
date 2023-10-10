@@ -14,19 +14,21 @@
       outline: none;
       cursor: pointer;
       font-weight: 600;
-      border-radius: 3px;
+
       padding: 12px 20px;
       border: 0;
       color: #000021;
       background: #ffffff;
       line-height: 1.15;
       font-size: 16px;
- 
+
+      border-radius: 1em;
       }
   
     .button:hover{
-       transition: all .1s ease;
-       box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1d8de9;
+      transform: scale(1.1)
+
+       
     }
     
 

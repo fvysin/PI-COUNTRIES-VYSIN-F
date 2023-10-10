@@ -17,7 +17,8 @@
  
    .button:hover{
       transition: all .1s ease;
-      box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1d8de9;
+      transform: scale(1.1);
+      box-shadow: 0 0 0 0 #fff, 0 0 0 3px;
    }
    
 

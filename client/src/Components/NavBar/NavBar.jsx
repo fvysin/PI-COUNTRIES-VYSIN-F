@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { getCountryByName, getAllCountries } from '../../Redux/actions'
+import logo from "../Image/COUNTRIES (1).png"
 
 const NavBar=({setPagina}) =>{
 
@@ -47,6 +48,9 @@ const handleHomeClick = () => {
 
   return (
 <div className={style.container}>
+        <div >
+            <Link to={"/home"}><img src={logo} alt="Logo" className={style.logo}/></Link>
+        </div>
 
   <div className={style.navLink}>
     <Link to={'/Home'} className={style.navItem} onClick={handleHomeClick}>HOME </Link>

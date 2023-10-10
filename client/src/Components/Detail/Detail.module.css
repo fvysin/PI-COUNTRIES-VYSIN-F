@@ -1,131 +1,93 @@
 .imagen {
-    max-width: 60%;
-    display:block;
-    height: auto;
+  width: 190px;
+  height: 110px;
     margin: 20px 0;
-    border: 1px solid black
+
+}
+
+.container{
+
+  background-image: url('../Image/pexels-josh-sorenson-977603.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  background-size: cover;
+  height: 100%;  
+  width: 100%;
+    position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+    border: none;
 }
 .main{
-  display: flex;
   flex-direction: column;
   overflow: hidden;
   align-items: center;
-  text-align: center;
+  border:  1px solid rgb(255, 255, 255); 
+  background-color: #d7dcd9;
+  display:flex;
+  color: rgb(0, 0, 0);
   padding: 20px;
-  border:  1px solid black;
-  background-color: skyblue;
-  background-repeat: no-repeat;
-  background-position: center center;
- 
+  text-align: center;
+  border-radius: 10px;
+  position: absolute;
+  /* transform: translate(-50%, -50%); */
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 60%;
+  width: 25%;
+
+  /* justify-content: center ; */
+
 }
-/* 
-.background{
-  background-color: skyblue;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: cover;
-  height: 100vh; /* El 100% de la altura de la ventana del navegador */
-  /* overflow: hidden;  */
-
-/* } */
 
 
-
-/* .container {
-    background-color: rgb(209, 201, 201);
-    background-repeat: no-repeat;
-
-    opacity: 0.9;
-	  box-shadow: 3px 3px 5px 0px rgb(0 0 0 / 75%);
-
-    width: min(45em, 100%);
-    height: 33rem;
-    margin-left: 25rem;
-    margin: 1.8en auto;
-    border: solid 2px black;
-    border-radius: 0.8rem;
-    margin-top: -25px;
-    margin-bottom: 42px;
-
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-} */
 
 .cardTitleCont{
 
-  font-family: 'PT Sans', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
-
   font-weight: 450;
-  position: center;
+  color: aliceblue;
   height: 50px;
-  width: 450px;
-  margin-left: 34rem;
- 
-  text-decoration: none;
-  text-decoration-color: transparent;
- 
-  margin-top: 5px;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
   justify-content: center;
     
   }
 
-/* .imgReducida {
-  width: 450px;
-  border-radius: 8px 8px 0px 0px;
-  height: 250px;
-  display: flex;
-  position: relative;
-  margin: 0px;
-  padding: 0px;
-  z-index: 1;
+/* 
+
+  .name{
+    font-size: 1.2em;
+    background-color: #539d72;
+    background-attachment: fixed ;
+    color: rgb(0, 0, 0);
+    width: 200%;
+    text-align: center;
+    padding: 5px 0;
+    height: 7%;
+
   } */
 
-.nombre{
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 450;
-    text-decoration: none;
-    text-decoration-color: transparent;
-    position: relative;
-    margin-top: 5px;
-    height: 15px;
-    width: 750px;
-
+  .name {
+    font-size: 1.2em;
+    background-color: #539d72;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 5px 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* El fondo del nombre ocupará toda la tarjeta */
+    height: 7%;
   }
-/* 
-.continents{
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    text-decoration: none;
-    text-decoration-color: transparent;
-    border-bottom: none;
-    position: relative;
-    margin-top: 2px;
-    height: 15px;
-    width: 750px;
-  }
-
-.capital{
-    padding-top: 2px;
-    font-size: 15px;
-}
-
-.subregion{
-
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  text-decoration: none;
-  text-decoration-color: transparent;
-  border-bottom: none;
-  position: relative;
-  margin-top: 2px;
-  height: 5px;
-  width: 750px;
-  padding-top: 20px;
-  font-size: 16px;
-} */
+  

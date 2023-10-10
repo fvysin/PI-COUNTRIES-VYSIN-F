@@ -79,12 +79,6 @@ const handleSubmit = (event) => {
     !input.name ||
     errors.name ||
 
-    !input.difficulty ||
-    errors.difficulty ||
-
-    !input.duration ||
-    errors.duration ||
-
     !input.season ||
     errors.season ||
 
@@ -145,7 +139,7 @@ const handleDelete =(event)=>{
         <NavBar/>
         <div className={style.container}>
          <form className={style.form} onSubmit={handleSubmit}> 
-         <h1 className={style.titleForm}>CREATE ACTIVITY</h1>
+         <h2 className={style.titleForm}>Create a new activity</h2>
 
 
             <div> 
@@ -159,6 +153,7 @@ const handleDelete =(event)=>{
                   placeholder="Name"
                   //poner texto dentro del input
                   type="text" 
+                  className={style.selectStyle}
                   />
                 {errors.name ? <p>{errors.name}</p> : null}
               
@@ -172,19 +167,23 @@ const handleDelete =(event)=>{
                   value={input.duration}
                   onChange={handleChange}
                   placeholder="Duration"
-                  type="text" />
+                  type="text" 
+                  className={style.selectStyle}
+                  />
                 {errors.duration ? <p>{errors.duration}</p> : null}
             </div>
 
             <div className={style.column}>
               <div className={style.div}>
-                <label className={style.label}>Difficulty</label>
+               
                 <select
                   name="difficulty"
                   onChange={handleChange}
                   value={input.difficulty}
-                  className={style.input}
+                  className={style.selectStyle}
+                  
                   >
+                  
                   <option value="">--Select Difficulty--</option>
                   <option value="1">⭐ ☆ ☆ ☆ ☆</option>
                   <option value="2">⭐⭐ ☆ ☆ ☆</option>
@@ -196,20 +195,13 @@ const handleDelete =(event)=>{
               {errors.difficulty ? <p>{errors.difficulty}</p> : null}
             </div>
               
-
-
-
-
-  
-
-
         <div className={style.column}>
               <div className={style.div}>
-                <label className={style.label}>Season</label>
+                {/* <label className={style.label}>Season</label> */}
                 <select
                   name="season"
                   onChange={handleChange}
-                  className={style.input}
+                  className={style.selectStyle}
                   value={input.season}
                 >
                   <option value="">--Select Season--</option>
@@ -226,12 +218,13 @@ const handleDelete =(event)=>{
 
             <div>
            
-            <br/>  
+       
             <select
               name ="countries" 
               id="countries" 
               value={input.countries}
-              onChange={handleSelect}  
+              onChange={handleSelect} 
+              className={style.selectStyle} 
               //maneja los cambios en el menú desplegable. Cuando el usuario selecciona un país, este país se agrega al estado input.countries
               >
               <option value=''>--Select Countries--</option>
@@ -261,8 +254,10 @@ const handleDelete =(event)=>{
             <div>
             <button  
             type="submit"
-            onClick={handleSubmit}>
-            CREATE ACTIVITY
+            onClick={handleSubmit}
+            className={style.button}
+            >
+            SUBMIT
             </button>
             
             </div>

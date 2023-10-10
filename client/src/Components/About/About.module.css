@@ -1,5 +1,6 @@
 .container{
-    background-image: url('../Image/massimiliano-reginato-NgnxWU1r9To-unsplash.jpg');
+  background-image: url('../Image/pexels-josh-sorenson-977603.jpg');
+
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
@@ -10,18 +11,29 @@
     left: 0;
     position: fixed;
 
+     
+
+}
+.main:hover{
+animation:shadow-drop-center 0.6s linear both;box-shadow:0 0 0 0 transparent;
+  box-shadow:0 0 20px 0 rgba(255,255,255,.55)
 }
 
 .text{
 
-    color: whitesmoke;
+    color: rgb(0, 0, 0);
     font-size: 20px;
     margin-bottom: -1px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
   }
   .text2{
 
-    color: whitesmoke;
+    color: rgb(0, 0, 0);
     font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+
   }
   .main {
     display: flex;
@@ -34,8 +46,20 @@
     transform: translate(-50%, -50%);
     padding: 20px;
     border: 2px solid #fff;
-    background: rgba(0, 0, 0, 0.5);
+    /* background: rgba(0, 0, 0, 0.5); */
     border-radius: 5%;
     width: 350px;
     height: 220px;
+    background-color: rgba(255, 255, 255, 0.8);
+    align-items: center;
+    display:flex;
+
+
+   
+
+    
+
+  
+
+    
   }

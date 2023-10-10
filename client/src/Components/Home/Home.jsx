@@ -134,9 +134,9 @@ const Home = () => {
       </div>
       <div className={style.containerSec}>
 
-        <Cards countries={paisesPaginados}  clasName={style.cards}/>
+        <Cards countries={paisesPaginados} />
      
-      <Pagination pagina={pagina} setPagina={setPagina} maximo={maximo}clasName={style.paginado} />
+      <Pagination pagina={pagina} setPagina={setPagina} maximo={maximo} />
       </div>
 
     </div>
