@@ -25,10 +25,10 @@ const Detail = () => {
 
       <div className={style.main}>
       {countryId && countryId.map((country) => (
-        <section key={country.id} className={style.country}>
-          <div className={style.name}>
-          <h3>{country.name}</h3>
-          </div>
+        <section key={country.id}>
+        
+          <h3 className={style.name}>{country.name}</h3>
+         
           <h3>ID: {country.id}</h3>
           <img className={style.imagen} src={country.image} alt={country.name} />
           <h3>Continent: {country.continents}</h3>
