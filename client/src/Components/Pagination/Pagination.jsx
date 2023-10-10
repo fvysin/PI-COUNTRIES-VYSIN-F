@@ -1,7 +1,4 @@
 /* eslint-disable react/prop-types */
-
-
-
 import style from "../Pagination/Pagination.module.css";
 
 const Pagination = ({ pagina, setPagina, maximo }) => {
@@ -21,7 +18,7 @@ const Pagination = ({ pagina, setPagina, maximo }) => {
   return (
     <div className={style.paginator}>
       <button className={style.button} name='prev' onClick={handlePrevClick}>Prev</button>
-      <span>{pagina}/{maximo}</span>
+      <span className={style.text}>{pagina}/{maximo}</span>
       <button className={style.button} name='next' onClick={handleNextClick}>Next</button>
     </div>
   )

@@ -5,7 +5,8 @@ import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import {getAllCountries, postActivities} from '../../Redux/actions'
 import validation from './validation'
-import { Link } from 'react-router-dom'
+import NavBar from '../NavBar/NavBar'
+import image from '../Image/surf_-_36609(1080p).mp4'
 
 
 
@@ -135,10 +136,14 @@ const handleDelete =(event)=>{
 
 
     return(
-        <div>
-            <Link to ="/Home">
-        <button className={style.button}>BACK ⬅️ </button>
-        </Link>
+      <div className={style.mainContainer}>
+       
+
+        <video autoPlay muted loop id="backgroundVideo" className={style.video}>
+        <source src={image} type="video/mp4"/>
+        </video>
+        <NavBar/>
+        <div className={style.container}>
          <form className={style.form} onSubmit={handleSubmit}> 
          <h1 className={style.titleForm}>CREATE ACTIVITY</h1>
 
@@ -154,7 +159,7 @@ const handleDelete =(event)=>{
                   placeholder="Name"
                   //poner texto dentro del input
                   type="text" 
-                />
+                  />
                 {errors.name ? <p>{errors.name}</p> : null}
               
             </div >
@@ -179,7 +184,7 @@ const handleDelete =(event)=>{
                   onChange={handleChange}
                   value={input.difficulty}
                   className={style.input}
-                >
+                  >
                   <option value="">--Select Difficulty--</option>
                   <option value="1">⭐ ☆ ☆ ☆ ☆</option>
                   <option value="2">⭐⭐ ☆ ☆ ☆</option>
@@ -190,6 +195,7 @@ const handleDelete =(event)=>{
               </div>
               {errors.difficulty ? <p>{errors.difficulty}</p> : null}
             </div>
+              
 
 
 
@@ -263,6 +269,7 @@ const handleDelete =(event)=>{
 
 
         </form>
+        </div>
         </div>
     )
 }
