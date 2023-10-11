@@ -1,6 +1,3 @@
-
-
-
 /* eslint-disable react-hooks/exhaustive-deps */
 import style from '../Detail/Detail.module.css';
 import NavBar from '../NavBar/NavBar';
@@ -37,21 +34,22 @@ const Detail = () => {
             <h4>Area: {countryData[0].area}</h4>
             <h4>Population: {countryData[0].population}</h4>
 
-            <h4>Activities: </h4>
+            <h4>Activities: 
             {countryData[0].Activities.length > 0 ? (
               <ul>
                 {countryData[0].Activities.map((activity, index) => (
                   <li key={index}>
-                    <h5 className={style.h5}>{activity.name}</h5>
-                    <p className={style.p}>Difficulty: {activity.difficulty}</p>
-                    <p className={style.p}>Duration: {activity.duration} hrs.</p>
-                    <p className={style.p}>Season: {activity.season}</p>
+                    <h5 className={style.p}>・Name: {activity.name}</h5>
+                    <h5 className={style.p}>・Duration: {activity.duration} hrs.</h5>
+                    <h5 className={style.p}>・Difficulty: {activity.difficulty}</h5>
+                    <h5 className={style.p}>・Season: {activity.season}</h5>
                   </li>
                 ))}
               </ul>
             ) : (
-              <p className={style.p}>No hay actividades turísticas disponibles.</p>
+              <h4 className={style.p}>No activities.</h4>
             )}
+          </h4>
           </section>
         )}
       </div>

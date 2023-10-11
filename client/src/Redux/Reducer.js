@@ -24,7 +24,9 @@ let initialState={
     postActivity:[],
     currentPage:0,
     filteredCountries:[],
-    searchIdKeep:[]
+    searchIdKeep:[],
+    continent: 'All',
+    activity: 'All',
 }
 
 
@@ -75,6 +77,7 @@ const  reducer=(state= initialState, action)=> {
                     ...state,
                     countries: [...state.countries].map((country) => {
                       if (country.id === action.payload.id) {
+          
                         return {
                           ...country,
                           activities: [...country.activities, action.payload],
@@ -85,13 +88,30 @@ const  reducer=(state= initialState, action)=> {
                      }),
                    };
 
-         case FILTER_COUNTRY_BY_ACTIVITY:
-          const filteredActivity= state.countryCopy.filter((country)=>country.activities.length>0)
-          ///countryCopy
-          return { 
-             ...state,
-              countries: [...filteredActivity],          
-               };
+ 
+         
+      
+          case FILTER_COUNTRY_BY_ACTIVITY:
+      
+          const filterByActivities = state.countryCopy
+          const filteredAct = filterByActivities.filter((c) => { return c.activities?.find((c) => { return c.name === action.payload; }); });
+  
+          if (action.payload === 'all') {
+              return {
+              ...state, 
+              countries: filterByActivities
+              }
+          } else {
+              return {
+              ...state,
+              countries: filteredAct
+              }
+          }
+    
+    
+
+
+
 
         case FILTER_COUNTRY_BY_CONTINENT:
           const filteredContinent= state.countryCopy.filter((country)=>country.continents===action.payload)

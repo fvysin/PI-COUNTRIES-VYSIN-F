@@ -16,6 +16,8 @@ import {
 
 const Home = () => {
   const countries = useSelector(state => state.countries);
+  const activities= useSelector(state=>state.activities)
+
   const dispatch = useDispatch();
 
   const [pagina, setPagina] = useState(1);
@@ -50,21 +52,32 @@ const Home = () => {
       e.target.value === "Antarctica"
     ) {
       dispatch(continentFilter(e.target.value));
+      setPagina(1);
     }
    
   };
 
+  useEffect(() => {
+    dispatch(activityFilter("all"));
+  }, [dispatch]);
+
 
   const handleFilterActivity = (e) => {
-    if (e.target.value === "activity") {
-      dispatch(activityFilter(e.target.value));
+    const selectedActivity = e.target.value; // Esto debería ser un objeto, no una cadena como "activity"
+    if (selectedActivity === "activity") {
+      // Deberías enviar un objeto como payload, no solo una cadena
+      dispatch(activityFilter({ activity: selectedActivity }));
+      setPagina(1);
     }
   };
+
+
 
 
   const handleOrderPopulation = (e) => {
     if (e.target.value === "pop") {
       dispatch(orderByPopulation(e.target.value));
+      setPagina(1);
     }
   };
 
@@ -77,9 +90,17 @@ const Home = () => {
     }
     if (e.target.value === "desc") {
       dispatch(orderByName(e.target.value));
+      setPagina(1);
     }
     
   };
+
+
+  // const handleClearFilter=()=>{
+  //   console.log('celar', clear)
+  //   dispatch(clear())
+  //   setPagina(1)
+  // }
   
   return (
     
@@ -118,17 +139,29 @@ const Home = () => {
         </select>
 
 
-        <select
-          onChange={handleFilterActivity}
-          className={style.selectStyle}
-        >
-          <option value="activity">--Filter by Activity</option>
-          <option value="activity">Activity</option>
-       
-        </select>
 
 
+<select 
+    onChange={handleFilterActivity} 
+    className={style.selectStyle} 
+    name="Filter by Activity">
+  <option value="all">--Filter by Activity</option>
+  <option value="activity">Activity</option>
+  {Array.isArray(activities) ? 
+    activities.map((actividad) => (
+      <option key={actividad.id} value={actividad.nombre}>
+        {actividad.nombre}
+      </option>
+    )) 
+  : (
+    <option value="loading">Loading Activities...</option>
+  )}
+</select>
 
+
+        {/* <button onClick={handleClearFilter} className={style.clearButton}>
+          Clear Filters
+        </button> */}
 
 
       </div>

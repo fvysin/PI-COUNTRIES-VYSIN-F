@@ -166,12 +166,13 @@ const handleDelete =(event)=>{
                   name="duration"
                   value={input.duration}
                   onChange={handleChange}
-                  placeholder="Duration"
+                  placeholder="Duration hs"
                   type="text" 
                   className={style.selectStyle}
                   />
                 {errors.duration ? <p>{errors.duration}</p> : null}
             </div>
+
 
             <div className={style.column}>
               <div className={style.div}>
