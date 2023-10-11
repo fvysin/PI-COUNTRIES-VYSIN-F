@@ -1,11 +1,16 @@
 
 .paginator {
     display: flex;
-    justify-content: center;
+    justify-content:center;
     align-items: center;
-    margin-top: 10px; 
     flex-direction:row;
     height: 100px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+   
+  
   }
     
 
@@ -14,7 +19,6 @@
       outline: none;
       cursor: pointer;
       font-weight: 600;
-
       padding: 12px 20px;
       border: 0;
       color: #000021;

@@ -136,7 +136,7 @@ const Home = () => {
 
         <Cards countries={paisesPaginados} />
      
-      <Pagination pagina={pagina} setPagina={setPagina} maximo={maximo} />
+        <Pagination pagina={pagina} setPagina={setPagina} maximo={maximo} />
       </div>
 
     </div>

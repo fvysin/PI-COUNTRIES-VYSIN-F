@@ -61,7 +61,7 @@ const handleHomeClick = () => {
   <div className={style.searchContainer}>
     <form onSubmit={handleSubmit} className={style.searchForm}>
       <input
-        placeholder='Search a country'
+        placeholder='Search country'
         type="search"
         onChange={handleChange}
         value={searchValue}

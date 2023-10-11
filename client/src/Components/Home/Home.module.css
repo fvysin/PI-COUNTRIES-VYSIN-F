@@ -11,6 +11,9 @@
     left: 0;
     position: fixed;
 
+    flex-direction: column;
+
+
 }
 
 
@@ -20,19 +23,33 @@
     align-items: center;
     height: 5vh;
     margin-top: 2vh;
+    color: black;
     
 }
 
 .selectStyle {
     background-color:  #f7ffff;
+    color: black;
+    font-weight: bolder;
     text-align: center;
     height: 3.5vh;
     width: 15vw;
     margin: 0 0.25em;
     border-radius: 1em;
+    font-family: Arial, Helvetica, sans-serif;
 }
 /* .selFilters:hover{
     cursor: pointer;
     background-color: rgba(198, 71, 48, 0.853);
     color: #fff;
 } */
+
+.containerSec{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%; /* Opcional: ajusta el ancho según sea necesario */
+    padding: 20px;
+}

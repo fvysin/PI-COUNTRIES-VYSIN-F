@@ -139,7 +139,7 @@ const handleDelete =(event)=>{
         <NavBar/>
         <div className={style.container}>
          <form className={style.form} onSubmit={handleSubmit}> 
-         <h2 className={style.titleForm}>Create a new activity</h2>
+         <h2 className={style.titleForm}>Create new activity</h2>
 
 
             <div> 

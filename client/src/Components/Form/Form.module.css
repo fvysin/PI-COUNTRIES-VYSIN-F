@@ -91,26 +91,9 @@
 
 
 }
-/* 
-.selectStyle {
-    background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    height: 3.9vh;
-    width: 16vw;
-    margin: 0 0.25em;
-    border-radius: 0.5em;
-	margin-bottom: 0.5rem;
-	color: #000021;
-	font-weight:lighter;
-	font-family:Arial, Helvetica, sans-serif;
-	font-size: 15px; /* Establece el tamaño del texto para los elementos de selección */
-   
-	/* border: 1px solid #ccc; Agrega un borde a los elementos de selección */
-
- 
 
 
-/* Estilo para input */
+
 input.selectStyle {
 	background-color: rgba(255, 255, 255, 0.8);
 	text-align: center;
@@ -145,4 +128,7 @@ input.selectStyle {
 .label{
 
 		font-size: 12px;
+}
+.titleForm{
+	color: #000021;
 }

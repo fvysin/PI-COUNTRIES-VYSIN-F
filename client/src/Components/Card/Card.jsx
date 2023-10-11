@@ -14,6 +14,17 @@ const Card=({id, name, image, continents })=> {
     </Link>
     <img src={image} alt={""} className={style.image}/>
     <h4 className={style.continents} > Continent: {continents}  </h4>   
+
+    {/* {activities?.length > 0 && (
+      <h3>Activities:</h3>
+      )}
+    <div className={style["grid-container"]}>
+      {activities?.map((activity, index) => (
+        <span key={index} className={style.activity}>
+          {activity}
+        </span>  
+      ))}
+    </div> */}
         </div>
         )
       }

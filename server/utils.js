@@ -1,39 +1,3 @@
-// const axios = require("axios");
-// const {Country} = require ('./src/db')
-
-// const getCountriesApi=async()=>{
-//     try{
-//         const {data}= await axios.get ("http://localhost:5000/countries")
-//         console.log('data api')
-//         console.log(data)
-//     const countries= data.map((user)=>{
-//         return{
-//             id:user.cca3,
-//             name:user.name.common, 
-//             flag:user.flag.png, 
-//             continents: user.continents [0], 
-//             capital:user.capital? user.capital : "no info",
-//             subregion:user.subregion? user.subregion : "no info", 
-//             area: user.area,
-//             population: user.population, 
-//         }
-//     })
-    
-//     await Country.bulkCreate(countries)
-        
-// return data
-
-// }catch (error){
-//     console.log('error')
-// }
-// }
-
-
-// module.exports={
-//     getCountriesApi
-// }
-
-
 const axios = require('axios');
 const { Country, Activity} = require("./src/db")
 

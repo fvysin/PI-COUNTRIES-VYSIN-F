@@ -47,7 +47,8 @@ const  reducer=(state= initialState, action)=> {
         case GET_BY_ID:
              return {
             ...state, 
-               countryId: action.payload}
+            countryId: action.payload}
+               
             
         case GET_BY_NAME:
             return {
@@ -65,7 +66,7 @@ const  reducer=(state= initialState, action)=> {
         case CLEAR:
         return { 
             ...state,
-                 countryId: [],          
+            countryId: [],          
             };
 
                 
